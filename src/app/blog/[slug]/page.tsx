@@ -1,3 +1,6 @@
+import { auth } from "@/auth";
+import { redirect } from "next/navigation";
+
 import Image from "next/image";
 import parse from "html-react-parser";
 import type { Metadata } from "next";
@@ -59,6 +62,12 @@ export default async function PostPage({ params }: PageProps) {
   const { slug } = await params;
 
   const post = await getPost(slug);
+  const session = await auth();
+
+  // 🔒 PREMIUM GATE
+  if (post.articleSettings?.isPremium && !session) {
+    redirect("/login");
+  }
 
   return (
     <>
@@ -81,12 +90,15 @@ export default async function PostPage({ params }: PageProps) {
           )}
 
           <div className="mt-10 flex items-center justify-between border-y py-5">
-            <div className="text-sm text-zinc-600">
-              {post.articleSettings?.readingTime ?? 0} min read
+            <div className="flex items-center text-sm text-zinc-600">
+              <span>{post.articleSettings?.readingTime ?? 0} min read</span>
+
               {post.articleSettings?.isPremium && (
-                <span className="ml-2 font-medium text-violet-700">
-                  • Premium
-                </span>
+                <div className="ml-3 flex items-center gap-2">
+                  <span className="h-2 w-2 shrink-0 rounded-full bg-violet-700" />
+
+                  <span className="font-medium text-violet-700">Premium</span>
+                </div>
               )}
             </div>
           </div>

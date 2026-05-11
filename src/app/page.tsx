@@ -2,8 +2,26 @@ import { Container } from "@/components/container";
 import { Navbar } from "@/components/navbar";
 import { PostCard } from "@/components/post-card";
 import { getPosts } from "@/services/posts";
+import { Metadata } from "next";
 
 export const revalidate = 120;
+
+export const metadata: Metadata = {
+  title: "Home",
+  description:
+    "Chronicle explores frontend engineering, system design, and modern web architecture.",
+
+  openGraph: {
+    title: "Chronicle",
+    description:
+      "Modern publishing platform for engineering content.",
+    url: "https://your-domain.com",
+  },
+
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default async function HomePage() {
   const posts = await getPosts();

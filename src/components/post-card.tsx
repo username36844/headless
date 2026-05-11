@@ -33,7 +33,7 @@ export function PostCard({
 
         {/* Content */}
 
-        <div className="mt-2 max-w-3xl">
+        <div className="mt-4 max-w-3xl">
           <h2 className="text-2xl font-bold text-foreground transition-opacity duration-200 group-hover:opacity-80">
             {post.title}
           </h2>
@@ -59,7 +59,7 @@ export function PostCard({
 
             {post.articleSettings?.isPremium && (
               <>
-                <span>·</span>
+                <span className="w-2 h-2 bg-violet-700 rounded-full"></span>
 
                 <span className="font-medium text-violet-700">
                   Premium

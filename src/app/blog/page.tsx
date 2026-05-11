@@ -4,8 +4,26 @@ import { PostCard } from "@/components/post-card";
 import { para } from "@/index";
 
 import { getPosts } from "@/services/posts";
+import { Metadata } from "next";
 
 export const revalidate = 120;
+
+export const metadata: Metadata = {
+  title: "Articles",
+  description:
+    "Read articles on Next.js, frontend engineering, authentication, and system design.",
+
+  openGraph: {
+    title: "Articles | Chronicle",
+    description:
+      "Engineering-focused articles and deep dives.",
+    url: "https://your-domain.com/blog",
+  },
+
+  alternates: {
+    canonical: "/blog",
+  },
+};
 
 export default async function HomePage() {
   const posts = await getPosts();
@@ -26,9 +44,9 @@ export default async function HomePage() {
             </h1>
 
             <p className="mt-8 max-w-2xl text-xl leading-relaxed text-zinc-600">
-              Chronicle explores frontend systems, authentication,
-              performance, and scalable Next.js architecture through
-              long-form editorial content.
+              Chronicle explores frontend systems, authentication, performance,
+              and scalable Next.js architecture through long-form editorial
+              content.
             </p>
           </div>
 
@@ -44,9 +62,22 @@ export default async function HomePage() {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-                  {posts.map((post) => (
-                    <PostCard key={post.slug} post={post} />
-                  ))}
+                  {posts.map((post) => {
+                    const isPremium = post.articleSettings?.isPremium;
+
+                    return (
+                      <PostCard
+                        key={post.slug}
+                        post={{
+                          ...post,
+                          title: post.title,
+                          excerpt: isPremium
+                            ? "Login required to read this article"
+                            : post.excerpt,
+                        }}
+                      />
+                    );
+                  })}
                 </div>
               </div>
             </Container>
