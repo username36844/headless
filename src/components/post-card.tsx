@@ -34,11 +34,11 @@ export function PostCard({
         {/* Content */}
 
         <div className="mt-4 max-w-3xl">
-          <h2 className="text-2xl font-bold text-foreground transition-opacity duration-200 group-hover:opacity-80">
+          <h2 className="text-2xl line-clamp-2 font-bold text-foreground transition-opacity duration-200 group-hover:opacity-80">
             {post.title}
           </h2>
 
-          <p className="mt-3 leading-relaxed text-zinc-600">
+          <p className="mt-3 leading-relaxed line-clamp-2 text-zinc-600">
             {post.articleSettings?.subtitle}
           </p>
 
