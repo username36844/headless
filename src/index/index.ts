@@ -1,0 +1,1 @@
+export const para = "Editorial writing on Next.js, systems design, authentication, and frontend engineering."

@@ -1,0 +1,308 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+:root {
+  /* Fonts */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* Core */
+  --background: #fdfdfd;
+  --foreground: #191919;
+
+  /* Surface */
+  --card: #ffffff;
+  --card-foreground: #191919;
+
+  /* Muted */
+  --muted: #6b7280;
+  --muted-foreground: #71717a;
+
+  /* Borders */
+  --border: #ececec;
+
+  /* Accent */
+  --primary: #191919;
+  --primary-foreground: #ffffff;
+
+  --secondary: #f5f5f5;
+  --secondary-foreground: #191919;
+
+  --accent: #f5f5f5;
+  --accent-foreground: #191919;
+
+  /* Utility */
+  --popover: #ffffff;
+  --popover-foreground: #191919;
+
+  --input: #ececec;
+  --ring: #d4d4d4;
+
+  --destructive: #dc2626;
+
+  /* Brand */
+  --premium: #7c3aed;
+
+  /* Radius */
+  --radius: 1rem;
+}
+
+@theme inline {
+  /* Colors */
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-border: var(--border);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-destructive: var(--destructive);
+
+  --color-premium: var(--premium);
+
+  /* Fonts */
+
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+
+  /* Radius */
+
+  --radius-sm: calc(var(--radius) * 0.7);
+  --radius-md: calc(var(--radius) * 0.85);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.25);
+  --radius-2xl: calc(var(--radius) * 1.6);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+
+  font-family: var(--font-sans);
+
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+
+  overflow-x: hidden;
+}
+
+/* Base */
+
+* {
+  border-color: var(--border);
+}
+
+::selection {
+  background: #191919;
+  color: #ffffff;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: #191919;
+  letter-spacing: -0.03em;
+}
+
+/* Editorial Prose */
+
+.prose {
+  max-width: 72ch;
+}
+
+/* Paragraphs (core reading experience) */
+.prose p {
+  margin-top: 1em;
+  margin-bottom: 1em;
+
+  color: #2a2a2a;
+
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+/* H1 */
+.prose h1 {
+  margin-bottom: 1rem;
+
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.05;
+
+  letter-spacing: -0.04em;
+}
+
+/* H2 */
+.prose h2 {
+  margin-top: 3rem;
+  margin-bottom: 0rem;
+
+  font-size: 2.25rem;
+  font-weight: 750;
+  line-height: 1.15;
+
+  letter-spacing: -0.035em;
+}
+
+/* H3 */
+.prose h3 {
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.25;
+
+  letter-spacing: -0.02em;
+}
+
+.prose strong {
+  color: #111;
+  font-weight: 700;
+}
+
+.prose a {
+  color: #111;
+
+  text-decoration: underline;
+  text-decoration-color: #d4d4d4;
+  text-underline-offset: 3px;
+
+  transition: opacity 0.2s ease;
+}
+
+.prose a:hover {
+  opacity: 0.7;
+}
+
+/* Blockquote (Medium-style calm quote) */
+.prose blockquote {
+  margin: 3rem 0;
+
+  border-left: 3px solid #111;
+
+  padding-left: 1.25rem;
+
+  color: #444;
+
+  font-size: 1.1rem;
+  line-height: 1.75;
+
+  font-style: italic;
+}
+
+/* Lists */
+.prose ul,
+.prose ol {
+  padding-left: 1.25rem;
+}
+
+.prose li {
+  margin-top: 0.25rem;
+  list-style-type: disc;
+
+  color: #2a2a2a;
+
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+/* Code */
+.prose code {
+  border-radius: 0.35rem;
+  background: #f4f4f5;
+
+  padding: 0.2rem 0.4rem;
+
+  font-size: 0.92em;
+}
+
+.prose pre {
+  overflow-x: auto;
+
+  border-radius: 0.75rem;
+
+  background: #111;
+
+  padding: 1.25rem;
+
+  margin: 2rem 0;
+}
+
+/* Images */
+.prose img {
+  margin: 3rem 0;
+
+  border-radius: 1rem;
+}
+
+/* Divider */
+.prose hr {
+  margin: 3.5rem 0;
+
+  border-color: #e5e5e5;
+}
+
+/* Figure */
+.prose figure {
+  margin: 2.5rem 0;
+}
+
+.prose figcaption {
+  margin-top: 0.75rem;
+
+  text-align: center;
+
+  color: #71717a;
+
+  font-size: 0.9rem;
+}
+
+/* spacing rhythm fixes */
+.prose p + h2 {
+  margin-top: 3.5rem;
+}
+
+.prose p + h3 {
+  margin-top: 2.5rem;
+}
+
+/* Scrollbar (keep minimal) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4d4d8;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1aa;
+}
